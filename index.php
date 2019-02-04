@@ -2,6 +2,56 @@
 $is_auth = rand(0, 1);
 
 $user_name = 'Дмитрий Золотов'; // укажите здесь ваше имя
+
+
+$categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
+		
+$adverts = [
+		
+		[
+			'name' => '2014 Rossignol District Snowboard',
+			'category' => 'Доски и лыжи',
+			'price' => '10999',
+			'url' => 'img/lot-1.jpg'
+		],
+				
+		[
+			'name' => 'DC Ply Mens 2016/2017 Snowboard',
+			'category' => 'Доски и лыжи',
+			'price' => '159999',
+			'url' => 'img/lot-2.jpg'
+		],
+				
+		[
+			'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+			'category' => 'Крепления',
+			'price' => '8000',
+			'url' => 'img/lot-3.jpg'
+		],
+			
+		[
+			'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
+			'category' => 'Ботинки',
+			'price' => '10999',
+			'url' => 'img/lot-4.jpg'
+		],
+				
+		[
+			'name' => 'Куртка для сноуборда DC Mutiny Charocal',
+			'category' => 'Одежда',
+			'price' => '7500',
+			'url' => 'img/lot-5.jpg'
+		],
+				
+		[
+			'name' => 'Маска Oakley Canopy',
+			'category' => 'Разное',
+			'price' => '5400',
+			'url' => 'img/lot-6.jpg'
+		]
+			
+			];
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -51,74 +101,17 @@ $user_name = 'Дмитрий Золотов'; // укажите здесь ва�
     <section class="promo">
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
-        <?php 
-		
-		$categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
-		
-		$adverts = [
-		
-			0 => [
-				'name' => '2014 Rossignol District Snowboard',
-				'category' => 'Доски и лыжи',
-				'price' => '10999',
-				'url' => 'img/lot-1.jpg'
-				],
-				
-			1 => [
-				'name' => 'DC Ply Mens 2016/2017 Snowboard',
-				'category' => 'Доски и лыжи',
-				'price' => '159999',
-				'url' => 'img/lot-2.jpg'
-				],
-				
-			2 => [
-				'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-				'category' => 'Крепления',
-				'price' => '8000',
-				'url' => 'img/lot-3.jpg'
-				],
-			
-			3 => [
-				'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
-				'category' => 'Ботинки',
-				'price' => '10999',
-				'url' => 'img/lot-4.jpg'
-				],
-				
-			4 => [
-				'name' => 'Куртка для сноуборда DC Mutiny Charocal',
-				'category' => 'Одежда',
-				'price' => '7500',
-				'url' => 'img/lot-5.jpg'
-				],
-				
-			5 => [
-				'name' => 'Маска Oakley Canopy',
-				'category' => 'Разное',
-				'price' => '5400',
-				'url' => 'img/lot-6.jpg'
-				]
-			
-		];
-		
-		?>
 		
 		<ul class="promo__list">
             <!--заполните этот список из массива категорий-->
             
-			<?php
-			
-			$index = 0;
-			$num_count = count($categories);
-			
-			while ($index < $num_count): ?>
-				<li class="promo__item promo__item--boards">	
-					<a class="promo__link" href="pages/all-lots.html">
-					<?php print($categories[$index]); ?>
-					</a>
-					<?php $index ++; ?>
-				</li>
-			<?php endwhile; ?>
+			<?php foreach ($categories as $key => $value): ?>
+			<li class="promo__item promo__item--boards">	
+				<a class="promo__link" href="pages/all-lots.html">
+					<?php print($categories[$key]); ?>
+				</a>
+			</li>
+			<?php endforeach; ?>
 			
 			<li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
@@ -179,19 +172,14 @@ $user_name = 'Дмитрий Золотов'; // укажите здесь ва�
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <?php
-			
-			$index = 0;
-			$num_count = count($categories);
-			
-			while ($index < $num_count): ?>
-				<li class="nav__item">	
-					<a href="pages/all-lots.html">
-					<?php print($categories[$index]); ?>
-					</a>
-					<?php $index ++; ?>
-				</li>
-			<?php endwhile; ?>
+          
+			<?php foreach ($categories as $key => $value): ?>
+			<li class="nav__item">	
+				<a href="pages/all-lots.html">
+					<?php print($categories[$key]); ?>
+				</a>
+			</li>
+			<?php endforeach; ?>
 			
 			<li class="nav__item">
                 <a href="pages/all-lots.html">Название категории</a>
