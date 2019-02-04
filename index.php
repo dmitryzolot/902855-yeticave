@@ -108,7 +108,7 @@ $adverts = [
 			<?php foreach ($categories as $key => $value): ?>
 			<li class="promo__item promo__item--boards">	
 				<a class="promo__link" href="pages/all-lots.html">
-					<?php print($categories[$key]); ?>
+					<?= $value ?>
 				</a>
 			</li>
 			<?php endforeach; ?>
@@ -176,7 +176,7 @@ $adverts = [
 			<?php foreach ($categories as $key => $value): ?>
 			<li class="nav__item">	
 				<a href="pages/all-lots.html">
-					<?php print($categories[$key]); ?>
+					<?= $value ?>
 				</a>
 			</li>
 			<?php endforeach; ?>
