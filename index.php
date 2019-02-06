@@ -56,12 +56,9 @@ $adverts = [
 
 <?php 
 date_default_timezone_set("Europe/Helsinki");
-$curtime = date('H:i:s');
 $ts_midnight = strtotime("tomorrow");
 $sec_to_midnight = $ts_midnight - time();
-$hours = floor($sec_to_midnight / 3600);
-$minutes = floor(($sec_to_midnight % 3600) / 60);
-$hm_tomidnight = "$hours".":"."$minutes";
+$hm_tomidnight = date('H:i', $sec_to_midnight);
 ?>
 
 <?php
