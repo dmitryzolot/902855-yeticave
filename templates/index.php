@@ -36,7 +36,7 @@
                             <span class="lot__cost"><?= number_format(ceil(htmlspecialchars($item['price'])),0, '.', ' ') ?> <b class="rub">р</b></span>
 						</div>
 						<div class="lot__timer timer">
-                            12:23
+                            <?=$hm_tomidnight; ?>
                         </div>
 					</div>
 				</div>
