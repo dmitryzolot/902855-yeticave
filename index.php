@@ -54,11 +54,21 @@ $adverts = [
 
 ?>
 
+<?php 
+date_default_timezone_set("Europe/Helsinki");
+$curtime = date('H:i:s');
+$ts_midnight = strtotime("tomorrow");
+$sec_to_midnight = $ts_midnight - time();
+$hours = floor($sec_to_midnight / 3600);
+$minutes = floor(($sec_to_midnight % 3600) / 60);
+$hm_tomidnight = "$hours".":"."$minutes";
+?>
+
 <?php
 
 require("functions.php");
 
-$content = include_template('index.php', ['categories' => $categories, 'adverts' => $adverts]);
+$content = include_template('index.php', ['categories' => $categories, 'adverts' => $adverts, 'hm_tomidnight' => $hm_tomidnight]);
 $layout = include_template('layout.php', ['content' => $content, 'categories' => $categories, 'is_auth' => $is_auth, 'user_name' => $user_name]);
 print $layout;
 ?>
