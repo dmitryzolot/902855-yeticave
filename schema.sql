@@ -11,12 +11,12 @@ name char(30) not null unique
 create table items (
 id int auto_increment primary key,
 created_at TIMESTAMP,
-name char(30) not null,
+name char(50) not null,
 description char(240),
 picture char(200),
-initial_price int,
+initial_price float,
 sale_end DATETIME,
-bid_step int,
+bid_step float,
 users_id INT(11),
 winners_id INT(11),
 categories_id INT(11)
@@ -25,7 +25,7 @@ categories_id INT(11)
 create table bid (
 id int auto_increment primary key,
 bid_date TIMESTAMP,
-amount int,
+amount float,
 users_id INT(11),
 items_id INT(11)
 );
@@ -40,4 +40,10 @@ contact char(50),
 items_id INT(11),
 bids_id INT(11)
 );
+
+create unique index category_name on categories(name);
+create unique index user_email on users(email);
+create index item_name on items(name);
+create index sales_date on items(sale_end);
+create index item_date on items(created_at);
 
