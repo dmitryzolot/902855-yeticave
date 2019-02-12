@@ -14,9 +14,9 @@ created_at TIMESTAMP,
 name char(50) not null,
 description char(240),
 picture char(200),
-initial_price int,
+initial_price float,
 sale_end DATETIME,
-bid_step int,
+bid_step float,
 users_id INT(11),
 winners_id INT(11),
 categories_id INT(11)
@@ -25,7 +25,7 @@ categories_id INT(11)
 create table bid (
 id int auto_increment primary key,
 bid_date TIMESTAMP,
-amount int,
+amount float,
 users_id INT(11),
 items_id INT(11)
 );
