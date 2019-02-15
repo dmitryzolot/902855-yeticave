@@ -55,7 +55,7 @@
 			<?php foreach ($categories as $key => $value): ?>
 			<li class="nav__item">	
 				<a href="pages/all-lots.html">
-					<?= $value ?>
+					<?= $value['name'] ?>
 				</a>
 			</li>
 			<?php endforeach; ?>

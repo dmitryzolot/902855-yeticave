@@ -3,10 +3,37 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Дмитрий Золотов'; // укажите здесь ваше имя
 
+$con = mysqli_connect ("localhost", "root", "", "yeticave");
 
-$categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
+
+if ($con == false) {
+	print("Ошибка подключения: " . mysqli_connect_error());
+}
+else { 
+print("Соединение установлено");
+}
+
+
+$categoriesSql = 'select * from categories';
+$categoriesResult = mysqli_query($con, $categoriesSql);
+if ($categoriesResult) {
+$categories = mysqli_fetch_all($categoriesResult, MYSQLI_ASSOC);
+} else {
+$categories = []; // Пустой массив
+}
+
+$advertsSql = "SELECT items.name, categories.name AS category_name, items.initial_price, items.picture FROM items 
+JOIN categories ON items.categories_id = categories.id";
+
+
+$advertsResult = mysqli_query($con, $advertsSql);
+if ($advertsResult) {
+$adverts = mysqli_fetch_all($advertsResult, MYSQLI_ASSOC);
+} else {
+$adverts = []; // Пустой массив
+}
 		
-$adverts = [
+/* $adverts = [
 		
 		[
 			'name' => '2014 Rossignol District Snowboard',
@@ -51,8 +78,9 @@ $adverts = [
 		]
 			
 			];
-
+*/
 ?>
+
 
 <?php 
 date_default_timezone_set("Europe/Helsinki");
@@ -66,6 +94,6 @@ $hm_tomidnight = date('H:i', $sec_to_midnight);
 require("functions.php");
 
 $content = include_template('index.php', ['categories' => $categories, 'adverts' => $adverts, 'hm_tomidnight' => $hm_tomidnight]);
-$layout = include_template('layout.php', ['content' => $content, 'categories' => $categories, 'is_auth' => $is_auth, 'user_name' => $user_name]);
+$layout = include_template('layout.php', ['content' => $content, 'categories' => $categories, 'is_auth' => $is_auth, 'user_name' => $user_name, 'sql' => $categoriesSql, 'categoriesResult' => $categoriesResult, 'con' => $con]);
 print $layout;
 ?>
