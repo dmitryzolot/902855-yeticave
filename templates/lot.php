@@ -1,30 +1,14 @@
 <nav class="nav">
-      <ul class="nav__list container">
-        <?php foreach ($categories as $key => $value): ?>
+  <ul class="nav__list container">
+    <?php foreach ($categories as $key => $value): ?>
 		<li class="nav__item">
-          <a href="all-lots.html"><?= $value['name'] ?></a>
-        </li>
-        <?php endforeach; ?>
-		
-		<li class="nav__item">
-          <a href="all-lots.html">Крепления</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Ботинки</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Одежда</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Инструменты</a>
-        </li>
-        <li class="nav__item">
-          <a href="all-lots.html">Разное</a>
-        </li>
-      </ul>
-    </nav>
+      <a href="all-lots.html"><?= $value['name'] ?></a>
+    </li>
+    <?php endforeach; ?>
+  </ul>
+</nav>
     <section class="lot-item container">
-      <h2>DC Ply Mens 2016/2017 Snowboard</h2>
+      <h2><?=$lot['name']?></h2>
       <div class="lot-item__content">
         <div class="lot-item__left">
           <div class="lot-item__image">
